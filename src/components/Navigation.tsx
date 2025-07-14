@@ -38,8 +38,13 @@ const Navigation = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="text-2xl font-bold bg-hero-gradient bg-clip-text text-transparent">
-            AK
+          <div className="text-2xl font-bold">
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              AK
+            </span>
+            <span className="text-xs text-muted-foreground ml-1 hidden sm:inline">
+              .dev
+            </span>
           </div>
 
           {/* Desktop Navigation */}
