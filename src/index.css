@@ -7,18 +7,18 @@
 @layer base {
   :root {
     /* Dark professional theme */
-    --background: 222 20% 6%;
+    --background: 0 0% 0%;
     --foreground: 210 40% 98%;
 
-    --card: 222 15% 10%;
+    --card: 0 0% 5%;
     --card-foreground: 210 40% 98%;
 
     --popover: 222 15% 10%;
     --popover-foreground: 210 40% 98%;
 
-    /* Purple primary */
-    --primary: 280 80% 65%;
-    --primary-foreground: 0 0% 100%;
+    /* Tech blue primary */
+    --primary: 214 95% 60%;
+    --primary-foreground: 222 20% 6%;
 
     /* Subtle secondary */
     --secondary: 222 10% 15%;
