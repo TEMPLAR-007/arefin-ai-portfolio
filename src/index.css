@@ -6,43 +6,43 @@
 
 @layer base {
   :root {
-    /* Dark purple/magenta theme */
-    --background: 270 15% 8%;
-    --foreground: 300 20% 96%;
+    /* Dark professional theme */
+    --background: 222 20% 6%;
+    --foreground: 210 40% 98%;
 
-    --card: 270 20% 12%;
-    --card-foreground: 300 20% 96%;
+    --card: 222 15% 10%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 270 20% 12%;
-    --popover-foreground: 300 20% 96%;
+    --popover: 222 15% 10%;
+    --popover-foreground: 210 40% 98%;
 
-    /* Magenta primary */
-    --primary: 320 85% 65%;
-    --primary-foreground: 270 15% 8%;
+    /* Tech blue primary */
+    --primary: 214 95% 60%;
+    --primary-foreground: 222 20% 6%;
 
-    /* Purple secondary */
-    --secondary: 270 25% 18%;
-    --secondary-foreground: 300 20% 96%;
+    /* Subtle secondary */
+    --secondary: 222 10% 15%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 270 20% 15%;
-    --muted-foreground: 280 15% 65%;
+    --muted: 222 10% 12%;
+    --muted-foreground: 215 20% 65%;
 
-    /* Deep purple accent */
-    --accent: 280 75% 55%;
-    --accent-foreground: 270 15% 8%;
+    /* Purple accent for AI/tech feel */
+    --accent: 264 83% 65%;
+    --accent-foreground: 222 20% 6%;
 
     --destructive: 0 72% 55%;
-    --destructive-foreground: 300 20% 96%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 270 20% 22%;
-    --input: 270 25% 18%;
-    --ring: 320 85% 65%;
+    --border: 222 10% 20%;
+    --input: 222 10% 15%;
+    --ring: 214 95% 60%;
 
     /* Custom portfolio tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(320 85% 65%), hsl(280 75% 55%));
-    --card-gradient: linear-gradient(145deg, hsl(270 20% 12%), hsl(270 25% 18%));
-    --tech-glow: 0 0 40px hsl(320 85% 65% / 0.4);
-    --ai-glow: 0 0 30px hsl(280 75% 55% / 0.3);
+    --hero-gradient: linear-gradient(135deg, hsl(214 95% 60%), hsl(264 83% 65%));
+    --card-gradient: linear-gradient(145deg, hsl(222 15% 10%), hsl(222 10% 12%));
+    --tech-glow: 0 0 40px hsl(214 95% 60% / 0.3);
+    --ai-glow: 0 0 30px hsl(264 83% 65% / 0.2);
     
     /* Smooth transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
