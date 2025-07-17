@@ -32,13 +32,12 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-background/95 backdrop-blur-sm border-b border-border' : 'bg-transparent'
-    }`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass-card-dark backdrop-blur-md border-b border-white/10' : 'bg-transparent'
+      }`}>
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="text-2xl font-bold bg-hero-gradient bg-clip-text text-transparent">
+          <div className="text-2xl font-bold text-primary glass-effect px-3 py-1 rounded-lg">
             AK
           </div>
 
@@ -48,15 +47,15 @@ const Navigation = () => {
               <button
                 key={item.href}
                 onClick={() => scrollToSection(item.href)}
-                className="text-foreground hover:text-primary transition-colors relative group"
+                className="text-foreground hover:text-primary transition-colors relative group px-3 py-1 rounded-lg hover:glass-effect"
               >
                 {item.label}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
               </button>
             ))}
-            <Button 
+            <Button
               onClick={() => scrollToSection('#contact')}
-              className="bg-primary hover:bg-primary/90"
+              className="button-glass-primary"
             >
               Hire Me
             </Button>
@@ -86,7 +85,7 @@ const Navigation = () => {
                   {item.label}
                 </button>
               ))}
-              <Button 
+              <Button
                 onClick={() => scrollToSection('#contact')}
                 className="bg-primary hover:bg-primary/90 mt-4"
               >

@@ -1,13 +1,13 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Code2, 
-  Database, 
-  Brain, 
-  Server, 
-  Layers, 
+import {
+  Code2,
+  Database,
+  Brain,
+  Server,
+  Layers,
   Zap,
-  CheckCircle 
+  CheckCircle
 } from "lucide-react";
 
 const About = () => {
@@ -19,7 +19,7 @@ const About = () => {
       color: "text-primary"
     },
     {
-      category: "Frontend", 
+      category: "Frontend",
       icon: <Code2 className="h-6 w-6" />,
       technologies: ["React", "TailwindCSS", "TypeScript", "Responsive Design"],
       color: "text-accent"
@@ -39,27 +39,25 @@ const About = () => {
   ];
 
   const highlights = [
-    "5+ years of full-stack development experience",
-    "Built AI-powered dashboards for business intelligence", 
-    "Developed comprehensive management systems (LMS, StMS, ERP)",
-    "Expert in converting business requirements to scalable tech solutions",
-    "Starting my own service agency to help teams build faster"
+    "Building AI-powered dashboards for business intelligence",
+    "Developing comprehensive management systems (LMS, StMS, ERP)",
+    "Converting business requirements to scalable tech solutions",
+    "Creating custom service solutions for development teams"
   ];
 
   return (
     <section id="about" className="py-20 bg-muted/20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4 border-primary/30 text-primary">
+          <Badge variant="outline" className="mb-4 border-primary/30 text-primary glass-effect px-6 py-2.5 text-lg">
             About Me
           </Badge>
           <h2 className="text-4xl font-bold mb-6">
-            Building the <span className="bg-hero-gradient bg-clip-text text-transparent">Future</span> of Business Tech
+            Building the <span className="text-accent">Future</span> of Business Tech
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            I'm a Senior Full Stack Developer who specializes in transforming business ideas into 
-            intelligent, scalable systems. My focus is on AI-integrated platforms that make complex 
-            data accessible to everyone.
+            I specialize in transforming business ideas into efficient digital solutions. My focus is on AI-integrated platforms
+            that make complex data accessible to everyone.
           </p>
         </div>
 
@@ -92,11 +90,11 @@ const About = () => {
               Current Focus: <span className="text-primary">AI-Powered Business Intelligence</span>
             </h3>
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              I'm currently building an AI-powered dashboard that revolutionizes how businesses interact 
-              with their data. The system converts natural language queries into SQL and presents 
+              I'm currently building an AI-powered dashboard that revolutionizes how businesses interact
+              with their data. The system converts natural language queries into SQL and presents
               real-time visualizations — making data insights accessible to everyone, not just data analysts.
             </p>
-            
+
             <div className="space-y-3">
               {highlights.map((highlight, index) => (
                 <div key={index} className="flex items-start space-x-3">
@@ -115,7 +113,7 @@ const About = () => {
                 </div>
                 <h4 className="text-2xl font-bold mb-4">Ready to Build Something Amazing?</h4>
                 <p className="text-muted-foreground mb-6">
-                  Whether you need a full-stack web application, AI integration, or a complete 
+                  Whether you need a full-stack web application, AI integration, or a complete
                   business management system, I'm here to turn your vision into reality.
                 </p>
                 <div className="flex flex-wrap justify-center gap-2">

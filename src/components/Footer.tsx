@@ -19,7 +19,7 @@ const Footer = () => {
     },
     {
       icon: <Github className="h-5 w-5" />,
-      label: "GitHub", 
+      label: "GitHub",
       href: "https://github.com/TEMPLAR-007"
     },
     {
@@ -42,11 +42,11 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Brand & Description */}
           <div className="space-y-4">
-            <div className="text-2xl font-bold bg-hero-gradient bg-clip-text text-transparent">
+            <div className="text-2xl font-bold text-primary">
               Arefin Khan
             </div>
             <p className="text-muted-foreground leading-relaxed">
-              Senior Full Stack Developer specializing in AI-powered business solutions. 
+              Full Stack Developer focused on AI-powered business solutions.
               Building the future of intelligent, scalable systems.
             </p>
             <Badge variant="outline" className="border-primary/30 text-primary w-fit">
@@ -100,7 +100,7 @@ const Footer = () => {
               <Heart className="h-4 w-4 text-red-500 animate-pulse" />
               <span>using React & TailwindCSS</span>
             </div>
-            
+
             <div className="flex items-center space-x-4 text-sm text-muted-foreground">
               <span>🇧🇩 Based in Bangladesh</span>
               <span>•</span>
