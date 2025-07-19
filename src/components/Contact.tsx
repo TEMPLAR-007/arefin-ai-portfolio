@@ -62,9 +62,9 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 glass-effect">
+    <section id="contact" className="py-12 bg-background relative z-20">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16 glass-card-dark p-8 rounded-2xl">
+        <div className="text-center mb-12">
           <Badge variant="outline" className="mb-4 border-accent/30 text-accent glass-effect px-6 py-2.5 text-lg">
             Get In Touch
           </Badge>

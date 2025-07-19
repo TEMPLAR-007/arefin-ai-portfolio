@@ -5,13 +5,38 @@ import { Menu, X } from "lucide-react";
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 50);
+
+          // Active section detection
+          const sections = ['home', 'about', 'services', 'projects', 'contact'];
+          const scrollPosition = window.scrollY + 100;
+
+          for (const section of sections) {
+            const element = document.getElementById(section);
+            if (element) {
+              const { offsetTop, offsetHeight } = element;
+              if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                setActiveSection(section);
+                break;
+              }
+            }
+          }
+
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -32,7 +57,9 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass-card-dark backdrop-blur-md border-b border-white/10' : 'bg-transparent'
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${isScrolled
+      ? 'backdrop-blur-md bg-white/5 shadow-xl backdrop-saturate-125'
+      : 'bg-transparent'
       }`}>
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
@@ -43,16 +70,23 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => scrollToSection(item.href)}
-                className="text-foreground hover:text-primary transition-colors relative group px-3 py-1 rounded-lg hover:glass-effect"
-              >
-                {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
-              </button>
-            ))}
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href.replace('#', '');
+              return (
+                <button
+                  key={item.href}
+                  onClick={() => scrollToSection(item.href)}
+                  className={`transition-all duration-300 relative group px-3 py-1 rounded-lg ${isActive
+                    ? 'text-primary glass-effect'
+                    : 'text-foreground hover:text-primary hover:glass-effect'
+                    }`}
+                >
+                  {item.label}
+                  <span className={`absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`} />
+                </button>
+              );
+            })}
             <Button
               onClick={() => scrollToSection('#contact')}
               className="button-glass-primary"

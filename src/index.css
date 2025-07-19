@@ -266,11 +266,16 @@
   }
 }
 
-/* Enable smooth scrolling and snap scrolling */
+/* Enable smooth scrolling */
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y proximity;
   -webkit-overflow-scrolling: touch;
+}
+
+/* Basic section styles */
+section {
+  width: 100%;
+  overflow: visible;
 }
 
 /* Hide scrollbar but keep functionality */

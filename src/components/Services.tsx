@@ -15,53 +15,55 @@ import {
 const Services = () => {
   const services = [
     {
-      icon: <Globe className="h-8 w-8" />,
-      title: "Full Stack Web Development",
-      description: "Building modern web applications with clean architecture and best practices. Specializing in React ecosystem with Django and Node.js backend solutions.",
-      features: ["React & Next.js", "Django & Node.js", "PostgreSQL & Redis", "TypeScript"],
+      icon: <Brain className="h-6 w-6" />,
+      title: "AI-Powered Solutions",
+      description: "Transform your applications with intelligent features. From chatbots to data analysis, I integrate cutting-edge AI to solve real business problems.",
+      features: ["OpenAI Integration", "Natural Language Processing", "Intelligent Automation", "Custom AI Models"],
+      highlight: true,
+      badge: "Specialized"
+    },
+    {
+      icon: <Globe className="h-6 w-6" />,
+      title: "Modern Web Development",
+      description: "Crafting beautiful, fast, and responsive web experiences. Every project is built with performance, accessibility, and user experience in mind.",
+      features: ["React & Next.js", "TypeScript", "Performance Optimization", "Mobile-First Design"],
+      highlight: true,
+      badge: "Core Expertise"
+    },
+    {
+      icon: <Smartphone className="h-6 w-6" />,
+      title: "Full-Stack Applications",
+      description: "End-to-end web applications that scale. From concept to deployment, I handle both frontend elegance and backend robustness.",
+      features: ["Complete Architecture", "Database Design", "User Authentication", "Admin Panels"],
       highlight: false
     },
     {
-      icon: <Brain className="h-8 w-8" />,
-      title: "AI Dashboard & Data Tools",
-      description: "Creating intelligent data platforms that make complex analytics simple. Powered by natural language processing and real-time insights.",
-      features: ["OpenAI Integration", "Data Visualization", "Real-time Analytics", "Custom Dashboards"],
-      highlight: true
-    },
-    {
-      icon: <Smartphone className="h-8 w-8" />,
-      title: "Modern Web Applications",
-      description: "Crafting responsive, fast-loading web applications with modern features. Focus on performance, accessibility, and great user experience.",
-      features: ["TailwindCSS", "Responsive Design", "PWA Support", "Performance Optimization"],
-      highlight: true
-    },
-    {
-      icon: <Server className="h-8 w-8" />,
-      title: "Backend API Development",
-      description: "Developing secure and scalable REST APIs with comprehensive documentation. Built with modern frameworks and best security practices.",
-      features: ["Django REST", "API Security", "JWT Auth", "Swagger Docs"],
+      icon: <BarChart3 className="h-6 w-6" />,
+      title: "Data Visualization",
+      description: "Turn complex data into actionable insights. Interactive dashboards and analytics that help you make informed decisions.",
+      features: ["Interactive Charts", "Real-time Analytics", "Custom Dashboards", "Export Capabilities"],
       highlight: false
     },
     {
-      icon: <Settings className="h-8 w-8" />,
-      title: "Business Management Systems",
-      description: "Custom-built management platforms that streamline your operations. From learning platforms to ERP systems tailored to your needs.",
-      features: ["Role-based Access", "Custom Workflows", "Data Analytics", "Third-party Integration"],
+      icon: <Server className="h-6 w-6" />,
+      title: "Backend Architecture",
+      description: "Solid foundations for your applications. Secure, scalable server solutions with clean APIs and optimized databases.",
+      features: ["Django & Node.js", "RESTful APIs", "Database Optimization", "Security Best Practices"],
       highlight: false
     },
     {
-      icon: <BarChart3 className="h-8 w-8" />,
-      title: "Data Analytics Solutions",
-      description: "Transform raw data into actionable insights. Building custom analytics solutions that help make data-driven decisions.",
-      features: ["Data Visualization", "Custom Reports", "Real-time Metrics", "Analytics Dashboard"],
+      icon: <Settings className="h-6 w-6" />,
+      title: "System Integration",
+      description: "Connect and automate your business processes. Custom solutions that streamline workflows and eliminate repetitive tasks.",
+      features: ["Workflow Automation", "Third-party APIs", "Process Optimization", "Legacy System Updates"],
       highlight: false
     }
   ];
 
   return (
-    <section id="services" className="py-20 glass-effect">
+    <section id="services" className="py-12 glass-effect">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16 glass-card-dark p-8 rounded-2xl">
+        <div className="text-center mb-12">
           <Badge variant="outline" className="mb-4 border-accent/30 text-accent glass-effect px-6 py-2.5 text-lg">
             Services
           </Badge>
@@ -73,76 +75,72 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {services.map((service, index) => (
             <Card
               key={service.title}
-              className={`relative overflow-hidden transition-all duration-300 hover:scale-105 group ${service.highlight
-                ? 'card-glass-primary'
-                : 'card-glass-hover'
-                }`}
+              className={`relative overflow-hidden transition-all duration-500 hover:scale-105 group cursor-pointer ${service.highlight
+                ? 'card-glass-primary border-primary/30 shadow-lg hover:shadow-primary/20'
+                : 'card-glass-hover border-accent/20 hover:shadow-accent/10'
+                } animate-fade-in-up flex flex-col min-h-[350px]`}
+              style={{ animationDelay: `${index * 100}ms` }}
             >
               {service.highlight && (
-                <div className="absolute top-0 right-0 glass-gradient-dark text-primary-foreground px-3 py-1 text-sm font-medium rounded-bl-lg">
+                <div className="absolute top-3 right-3 glass-gradient-dark text-primary-foreground px-2 py-1 text-xs font-medium rounded-full">
                   <Sparkles className="h-3 w-3 inline mr-1" />
-                  Popular
+                  {service.badge}
                 </div>
               )}
 
-              <CardHeader>
-                <div className={`inline-flex w-fit p-3 rounded-lg ${service.highlight ? 'glass-gradient' : 'glass-effect'
-                  }`}>
-                  <div className={service.highlight ? 'text-primary' : 'text-accent'}>
-                    {service.icon}
+              <CardContent className="p-6 flex flex-col h-full">
+                {/* Header Section */}
+                <div className="text-center mb-4">
+                  <div className={`inline-flex p-3 rounded-lg mb-3 ${service.highlight ? 'glass-gradient' : 'glass-effect'
+                    } group-hover:scale-110 transition-transform`}>
+                    <div className={service.highlight ? 'text-primary' : 'text-accent'}>
+                      {service.icon}
+                    </div>
                   </div>
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                    {service.title}
+                  </h3>
                 </div>
-                <CardTitle className="text-xl mb-2">{service.title}</CardTitle>
-                <p className="text-muted-foreground leading-relaxed">{service.description}</p>
-              </CardHeader>
 
-              <CardContent className="space-y-6">
-                <div className="space-y-2">
+                {/* Description */}
+                <p className="text-muted-foreground text-base leading-relaxed mb-4 text-center flex-grow">
+                  {service.description}
+                </p>
+
+                {/* Features List */}
+                <div className="space-y-2 mb-6">
                   {service.features.map((feature) => (
-                    <div key={feature} className="flex items-center text-sm glass-effect p-2 rounded-lg">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3" />
-                      <span className="text-muted-foreground">{feature}</span>
+                    <div key={feature} className="flex items-center glass-effect p-2 rounded-lg group-hover:bg-white/10 transition-colors">
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">{feature}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="pt-4 border-t border-white/10">
-                  <Button
-                    className={`w-full ${service.highlight
-                      ? 'button-glass-primary'
-                      : 'button-glass-accent'
-                      }`}
-                  >
-                    Get Started
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </div>
+                {/* CTA Button */}
+                <Button
+                  className={`w-full mt-auto ${service.highlight
+                    ? 'button-glass-primary'
+                    : 'button-glass-accent'
+                    } group-hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300`}
+                  onClick={() => {
+                    const contactSection = document.querySelector('#contact');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                      localStorage.setItem('selectedService', service.title);
+                    }
+                  }}
+                >
+                  Let's Discuss
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        {/* CTA Section */}
-        <div className="mt-16 text-center">
-          <Card className="card-glass-primary">
-            <CardContent className="p-8">
-              <h3 className="text-3xl font-bold mb-4">
-                Need Something <span className="text-primary">Custom</span>?
-              </h3>
-              <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                Every business is unique. Let's discuss your specific requirements and create
-                a tailored solution that perfectly fits your needs and budget.
-              </p>
-              <Button size="lg" className="button-glass-primary">
-                Schedule a Free Consultation
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </CardContent>
-          </Card>
         </div>
       </div>
     </section>
