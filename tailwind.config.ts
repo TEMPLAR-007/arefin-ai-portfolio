@@ -79,6 +79,7 @@ export default {
 			},
 			transitionTimingFunction: {
 				'bounce-in': 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+				'custom-bezier': 'cubic-bezier(0.19, 1, 0.22, 1)',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -114,6 +115,28 @@ export default {
 					'50%': {
 						transform: 'translateY(-10px)'
 					}
+				},
+				'card-enter': {
+					'from': {
+						opacity: '0',
+						transform: 'translateY(100px) scale(0.95)',
+						visibility: 'hidden'
+					},
+					'to': {
+						opacity: '1',
+						transform: 'translateY(0) scale(1)',
+						visibility: 'visible'
+					}
+				},
+				'fadeIn': {
+					'from': {
+						opacity: '0',
+						transform: 'translateY(20px)'
+					},
+					'to': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
 				}
 			},
 			animation: {
@@ -121,7 +144,30 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in-up': 'fade-in-up 0.6s ease-out',
 				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
-				'float': 'float 3s ease-in-out infinite'
+				'float': 'float 3s ease-in-out infinite',
+				'card-enter': 'card-enter 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards',
+				'fade-in': 'fadeIn 0.8s ease forwards',
+			},
+			utilities: {
+				'.backface-hidden': {
+					'backface-visibility': 'hidden',
+				},
+				'.perspective-1000': {
+					'perspective': '1000px',
+					'transform-style': 'preserve-3d',
+				},
+				'.transform-gpu': {
+					'transform': 'translate3d(0, 0, 0)',
+				},
+				'.will-change-transform': {
+					'will-change': 'transform',
+				},
+				'.visible': {
+					'visibility': 'visible',
+				},
+				'.invisible': {
+					'visibility': 'hidden',
+				}
 			}
 		}
 	},
