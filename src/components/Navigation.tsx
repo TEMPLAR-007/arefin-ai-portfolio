@@ -16,7 +16,7 @@ const Navigation = () => {
           setIsScrolled(window.scrollY > 50);
 
           // Active section detection
-          const sections = ['home', 'about', 'services', 'projects', 'contact'];
+          const sections = ['home', 'about', 'skills', 'services', 'projects', 'contact'];
           const scrollPosition = window.scrollY + 100;
 
           for (const section of sections) {
@@ -43,6 +43,7 @@ const Navigation = () => {
   const navItems = [
     { href: '#home', label: 'Home' },
     { href: '#about', label: 'About' },
+    { href: '#skills', label: 'Skills' },
     { href: '#services', label: 'Services' },
     { href: '#projects', label: 'Projects' },
     { href: '#contact', label: 'Contact' },

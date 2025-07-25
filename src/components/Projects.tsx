@@ -85,10 +85,10 @@ const Projects = () => {
     return `
       absolute overflow-hidden
       transition-all duration-600 ease-[cubic-bezier(0.19,1,0.22,1)]
-      rounded-[20px]
+      rounded-[28px]
       transform-gpu backface-hidden will-change-transform
-      bg-black border border-primary/20
-      shadow-xl hover:shadow-2xl hover:border-primary/30
+      bg-slate-900/95 border border-white/[0.08]
+      shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)]
       ${isVisible ? 'visible' : 'invisible'}
       ${isActive ? 'animate-card-enter' : ''}
       w-full
@@ -195,45 +195,82 @@ const Projects = () => {
 
   return (
     <div ref={sectionRef} className="relative h-[300vh]" id="projects">
-      <section className="w-full h-screen sticky top-0 overflow-hidden bg-black">
-        <div className="container px-4 md:px-6 lg:px-8 mx-auto h-full flex flex-col">
+      {/* Background gradient overlay for blending */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-transparent pointer-events-none" />
+
+      <section className="w-full h-screen sticky top-0 overflow-hidden">
+        {/* Background with gradient blend */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-[#0A0A0A] to-background" />
+
+        <div className="container relative px-4 md:px-6 lg:px-8 mx-auto h-full flex flex-col">
           <div className="flex-1 flex flex-col">
             <div className="flex flex-col items-center mt-16 md:mt-20">
               <Badge
                 variant="outline"
-                className="border-accent/30 text-accent glass-effect px-6 py-2 text-base mb-4"
+                className="border-accent/30 text-accent glass-effect px-6 py-2 text-base mb-4 backdrop-blur-sm"
               >
-                Projects & Case Studies
+                Featured Projects
               </Badge>
               <div className="text-center max-w-3xl mx-auto mb-12">
-                <h2 className="text-4xl md:text-5xl font-bold text-white">
-                  Recent <span className="text-primary">Work</span>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Real-world Applications
                 </h2>
+                <p className="text-base md:text-lg text-white/80">
+                  Showcasing modern development practices, AI integration, and scalable architecture solutions.
+                </p>
               </div>
             </div>
 
             <div ref={cardsContainerRef} className="relative h-[60vh] perspective-1000">
-              {/* Mobile navigation arrows */}
-              <div className="md:hidden absolute top-1/2 -translate-y-1/2 left-0 right-0 z-40 flex justify-between px-4">
+              {/* Navigation arrows - visible on all screen sizes */}
+              <div className="absolute top-1/2 -translate-y-1/2 left-4 md:left-8 lg:left-12 z-40">
                 <button
                   onClick={goToPrevProject}
-                  className="w-12 h-12 rounded-full bg-primary/80 backdrop-blur-sm flex items-center justify-center text-white border border-white/20 hover:bg-primary transition-colors"
+                  className="w-12 h-12 rounded-full bg-slate-800/90 backdrop-blur-sm flex items-center justify-center text-white border border-white/[0.08] hover:bg-slate-700/90 hover:scale-110 transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.15)]"
                   aria-label="Previous project"
                 >
-                  ←
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-5 h-5"
+                  >
+                    <path d="m15 18-6-6 6-6" />
+                  </svg>
                 </button>
+              </div>
+
+              <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-8 lg:right-12 z-40">
                 <button
                   onClick={goToNextProject}
-                  className="w-12 h-12 rounded-full bg-primary/80 backdrop-blur-sm flex items-center justify-center text-white border border-white/20 hover:bg-primary transition-colors"
+                  className="w-12 h-12 rounded-full bg-slate-800/90 backdrop-blur-sm flex items-center justify-center text-white border border-white/[0.08] hover:bg-slate-700/90 hover:scale-110 transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.15)]"
                   aria-label="Next project"
                 >
-                  →
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-5 h-5"
+                  >
+                    <path d="m9 18 6-6-6-6" />
+                  </svg>
                 </button>
               </div>
 
               {/* Card stack container */}
-              <div className="relative w-full max-w-5xl mx-auto h-full">
-                {/* Render projects in reverse order so the active one is on top */}
+              <div className="relative w-full max-w-7xl mx-auto h-full">
                 {[...projects].sort((a, b) => {
                   const indexA = projects.findIndex(p => p.title === a.title);
                   const indexB = projects.findIndex(p => p.title === b.title);
@@ -250,16 +287,16 @@ const Projects = () => {
                     >
                       {project.isViewMore ? (
                         // View More Card
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary to-black flex flex-col items-center justify-center text-center p-8">
+                        <div className="absolute inset-0 bg-slate-900/95 flex flex-col items-center justify-center text-center p-8 rounded-[28px] border border-white/[0.08]">
                           <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
                             {project.title}
                           </h3>
-                          <p className="text-white text-lg mb-8 max-w-md">
+                          <p className="text-white/90 text-lg mb-8 max-w-md">
                             {project.description}
                           </p>
                           <Button
                             size="lg"
-                            className="bg-white text-primary hover:bg-gray-100 shadow-lg transition-all duration-300"
+                            className="bg-slate-800 hover:bg-slate-700 text-white border border-white/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-all duration-300 rounded-2xl"
                             onClick={() => window.open(project.links.demo, "_blank")}
                           >
                             View All Projects
@@ -269,20 +306,20 @@ const Projects = () => {
                         // Regular Project Card
                         <div className="absolute inset-0 grid md:grid-cols-2 gap-4">
                           {/* Image Section */}
-                          <div className="relative h-full overflow-hidden rounded-l-[20px]">
+                          <div className="relative h-full overflow-hidden rounded-l-[28px] border-r border-white/[0.08]">
                             <div
                               className="absolute inset-0 bg-cover bg-center bg-no-repeat transform hover:scale-110 transition-transform duration-700"
                               style={{
                                 backgroundImage: `url('${project.image}')`,
                               }}
                             />
-                            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+                            <div className="absolute inset-0 bg-black/80" />
                           </div>
 
                           {/* Content Section */}
-                          <div className="relative flex flex-col h-full p-8 bg-black/80 backdrop-blur-sm rounded-r-[20px]">
+                          <div className="relative flex flex-col h-full p-8 bg-slate-900/95 rounded-r-[28px]">
                             <div className="mb-4">
-                              <div className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-primary/90 backdrop-blur-sm text-white mb-6">
+                              <div className="inline-flex items-center justify-center px-4 py-2 rounded-2xl bg-slate-800 text-white mb-6 border border-white/[0.08] shadow-[0_4px_15px_rgba(0,0,0,0.15)]">
                                 <span className="text-sm font-medium">{project.category}</span>
                               </div>
                               <h3 className="text-2xl sm:text-3xl md:text-4xl font-display text-white font-bold leading-tight mb-4">
@@ -295,7 +332,7 @@ const Projects = () => {
                                 {project.technologies.map((tech) => (
                                   <span
                                     key={tech}
-                                    className="px-3 py-1 rounded-full bg-gray-800/80 backdrop-blur-sm text-white/90 text-sm hover:bg-gray-700 transition-colors"
+                                    className="px-4 py-1.5 rounded-2xl bg-slate-800 text-white/90 text-sm hover:bg-slate-700 transition-colors border border-white/[0.08] shadow-[0_4px_15px_rgba(0,0,0,0.15)]"
                                   >
                                     {tech}
                                   </span>
@@ -303,11 +340,11 @@ const Projects = () => {
                               </div>
                             </div>
 
-                            <div className="mt-auto pt-6 border-t border-gray-800/50">
+                            <div className="mt-auto pt-6 border-t border-white/[0.08]">
                               <div className="grid md:grid-cols-2 gap-6">
                                 <div className="flex flex-wrap gap-6">
                                   {project.stats && project.stats.map((stat) => (
-                                    <div key={stat.label} className="text-gray-400">
+                                    <div key={stat.label} className="text-white/60">
                                       <div className="text-2xl font-bold text-white">{stat.value}</div>
                                       <div className="text-sm">{stat.label}</div>
                                     </div>
@@ -317,7 +354,7 @@ const Projects = () => {
                                 <div className="flex gap-3 justify-end">
                                   <Button
                                     size="lg"
-                                    className="bg-primary/90 hover:bg-primary backdrop-blur-sm text-white shadow-lg transition-all duration-300"
+                                    className="bg-slate-800 hover:bg-slate-700 text-white border border-white/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-all duration-300 rounded-2xl"
                                     onClick={() => window.open(project.links.demo, "_blank")}
                                   >
                                     <ExternalLink className="mr-2 h-4 w-4" />
@@ -326,7 +363,7 @@ const Projects = () => {
                                   <Button
                                     size="lg"
                                     variant="outline"
-                                    className="border-white/20 hover:border-primary text-white hover:text-primary transition-colors backdrop-blur-sm"
+                                    className="bg-slate-800 hover:bg-slate-700 text-white border border-white/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-colors rounded-2xl"
                                     onClick={() => window.open(project.links.github, "_blank")}
                                   >
                                     <GitHubIcon className="mr-2 h-4 w-4" />
@@ -341,11 +378,6 @@ const Projects = () => {
                     </div>
                   );
                 })}
-
-                {/* Page count indicator */}
-                <div className="absolute bottom-6 right-6 z-40 bg-primary/90 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm">
-                  {activeCardIndex + 1} / {projects.length}
-                </div>
               </div>
             </div>
           </div>

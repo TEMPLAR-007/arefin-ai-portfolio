@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Mail, Github } from "lucide-react";
 import SmokeBackground from "./SmokeBackground";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 const skillSets = [
   // Frontend
@@ -15,29 +15,39 @@ const skillSets = [
   ['OpenAI', 'TensorFlow', 'NLP', 'Data Analysis', 'PyTorch', 'APIs']
 ];
 
+const ANIMATION_DURATION = 400; // Animation duration in ms
+const DISPLAY_DURATION = 4000; // How long to display each set
+
 const Hero = () => {
   const [currentSetIndex, setCurrentSetIndex] = useState(0);
-  const [isFlipping, setIsFlipping] = useState(false);
+  const [isFlippingOut, setIsFlippingOut] = useState(false);
+  const [isFlippingIn, setIsFlippingIn] = useState(false);
   const [displayedText, setDisplayedText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
-  
+
   const titles = ['Full Stack Developer', 'AI Integration Specialist', 'Modern Web Architect'];
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
 
-  // Skill sets rotation
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsFlipping(true);
+  // Smooth animation sequence handler
+  const animateSkillSet = useCallback(() => {
+    setIsFlippingOut(true);
+
+    setTimeout(() => {
       setCurrentSetIndex((prev) => (prev + 1) % skillSets.length);
+      setIsFlippingOut(false);
+      setIsFlippingIn(true);
 
-      // Reset flip animation
       setTimeout(() => {
-        setIsFlipping(false);
-      }, 1500);
-    }, 4500); // Change entire set every 4.5 seconds for better readability
-
-    return () => clearInterval(interval);
+        setIsFlippingIn(false);
+      }, ANIMATION_DURATION);
+    }, ANIMATION_DURATION);
   }, []);
+
+  // Skill sets rotation with improved animation
+  useEffect(() => {
+    const interval = setInterval(animateSkillSet, DISPLAY_DURATION);
+    return () => clearInterval(interval);
+  }, [animateSkillSet]);
 
   // Typing effect for titles
   useEffect(() => {
@@ -45,7 +55,7 @@ const Hero = () => {
     let currentIndex = 0;
     setDisplayedText('');
     setIsTyping(true);
-    
+
     const typeInterval = setInterval(() => {
       if (currentIndex <= currentTitle.length) {
         setDisplayedText(currentTitle.slice(0, currentIndex));
@@ -53,16 +63,35 @@ const Hero = () => {
       } else {
         clearInterval(typeInterval);
         setIsTyping(false);
-        
-        // Wait before starting next title
+
         setTimeout(() => {
           setCurrentTitleIndex((prev) => (prev + 1) % titles.length);
-        }, 3000); // Show completed text for 3 seconds
+        }, 3000);
       }
-    }, 80); // Slightly slower typing
+    }, 80);
 
     return () => clearInterval(typeInterval);
   }, [currentTitleIndex]);
+
+  const renderBadgeSet = (skills: string[]) => (
+    <div className="badge-set">
+      {skills.map((skill, index) => (
+        <Badge
+          key={`${skill}-${index}`}
+          variant="secondary"
+          className={`bg-secondary/50 text-foreground/90 font-medium border border-white/5
+            badge-hover-effect
+            ${isFlippingOut ? 'animate-flip-out' : ''}
+            ${isFlippingIn ? 'animate-flip-in' : ''}`}
+          style={{
+            animationDelay: `${index * 35}ms`
+          }}
+        >
+          {skill}
+        </Badge>
+      ))}
+    </div>
+  );
 
   return (
     <section id="home" className="relative min-h-[100vh] flex items-center">
@@ -78,8 +107,8 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* Left Content */}
           <div className="text-left animate-fade-in-up">
-            <Badge 
-              variant="outline" 
+            <Badge
+              variant="outline"
               className="mb-6 border-primary/50 bg-primary/5 text-primary font-medium cursor-pointer hover:bg-primary/10 transition-colors"
               onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
@@ -124,18 +153,8 @@ const Hero = () => {
             </div>
 
             {/* Tech stack badges */}
-            <div className="flex flex-wrap gap-3">
-              {skillSets[currentSetIndex].map((skill, index) => (
-                <Badge
-                  key={`${skill}-${currentSetIndex}`}
-                  variant="secondary"
-                  className={`bg-secondary/50 text-foreground/90 font-medium border border-white/5 shadow-sm
-                           perspective-1000 relative transition-all duration-300 transform-gpu
-                           ${isFlipping ? 'animate-badge-flip' : ''}`}
-                >
-                  {skill}
-                </Badge>
-              ))}
+            <div className="badge-container">
+              {renderBadgeSet(skillSets[currentSetIndex])}
             </div>
           </div>
 
@@ -144,10 +163,10 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Enhanced Scroll indicator - Positioned relative to full viewport */}
-      <div 
+      {/* Enhanced Scroll indicator */}
+      <div
         className="absolute bottom-8 z-50 cursor-pointer group animate-bounce"
-        style={{ 
+        style={{
           left: '50vw',
           transform: 'translateX(-50%)',
           marginLeft: '-50vw',

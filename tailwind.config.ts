@@ -23,35 +23,35 @@ export default {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
-				background: 'hsl(var(--background))',
-				foreground: 'hsl(var(--foreground))',
+				background: "#0A0A0F",
+				foreground: "hsl(var(--foreground))",
 				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					DEFAULT: "#4F46E5", // Indigo
+					foreground: "#FFFFFF",
 				},
 				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
+					DEFAULT: "#12121A",
+					foreground: "#FFFFFF",
 				},
 				destructive: {
-					DEFAULT: 'hsl(var(--destructive))',
-					foreground: 'hsl(var(--destructive-foreground))'
+					DEFAULT: "hsl(var(--destructive))",
+					foreground: "hsl(var(--destructive-foreground))",
 				},
 				muted: {
-					DEFAULT: 'hsl(var(--muted))',
-					foreground: 'hsl(var(--muted-foreground))'
+					DEFAULT: "#12121A",
+					foreground: "#A1A1AA",
 				},
 				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
+					DEFAULT: "#6366F1", // Lighter indigo
+					foreground: "#FFFFFF",
 				},
 				popover: {
-					DEFAULT: 'hsl(var(--popover))',
-					foreground: 'hsl(var(--popover-foreground))'
+					DEFAULT: "#12121A",
+					foreground: "#FFFFFF",
 				},
 				card: {
-					DEFAULT: 'hsl(var(--card))',
-					foreground: 'hsl(var(--card-foreground))'
+					DEFAULT: "#12121A",
+					foreground: "#FFFFFF",
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
@@ -65,9 +65,10 @@ export default {
 				}
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				lg: "0.75rem",
+				md: "0.5rem",
+				sm: "0.375rem",
+				xl: "1rem"
 			},
 			backgroundImage: {
 				'hero-gradient': 'var(--hero-gradient)',
@@ -137,6 +138,10 @@ export default {
 						opacity: '1',
 						transform: 'translateY(0)'
 					}
+				},
+				gradient: {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.5' }
 				}
 			},
 			animation: {
@@ -147,6 +152,7 @@ export default {
 				'float': 'float 3s ease-in-out infinite',
 				'card-enter': 'card-enter 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards',
 				'fade-in': 'fadeIn 0.8s ease forwards',
+				'gradient': 'gradient 8s ease-in-out infinite'
 			},
 			utilities: {
 				'.backface-hidden': {

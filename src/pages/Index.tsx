@@ -6,6 +6,7 @@ import WhyChooseMe from "@/components/WhyChooseMe";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import TechnicalSkills from "@/components/TechnicalSkills";
 
 const Index = () => {
   return (
@@ -13,6 +14,7 @@ const Index = () => {
       <Navigation />
       <Hero />
       <About />
+      <TechnicalSkills />
       <Services />
       <Projects />
       <WhyChooseMe />
